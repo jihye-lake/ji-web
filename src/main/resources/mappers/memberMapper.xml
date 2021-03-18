@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.board.mappers.memberMapper">
+  	
+  	<!-- 회원가입 -->
+  	<insert id="signUp">
+  		insert into member(member_id, member_pwd)
+  			values(#{member_id}, #{member_pwd})
+  	</insert>
+  	
+  	<!-- 로그인 -->
+  	<!-- <![CDATA[
+			SELECT count(*) FROM member
+			WHERE member_id = #{member_id} AND member_pwd = #{member_pwd}
+		]]> -->
+  	
+  	<select id="loginCheck" resultType="com.board.domain.MemberVO">
+			SELECT member_id, member_pwd FROM member 
+			WHERE member_id = #{member_id} AND member_pwd = #{member_pwd}
+  	</select>
+  	
+  </mapper>
