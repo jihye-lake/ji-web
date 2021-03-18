@@ -5,15 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 작성</title>
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-<!-- include libraries(jQuery, bootstrap) --> <!-- head 사이에 가져와야 인식됨. 아래쪽 body 에서는 안 됨 -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-
-<!-- include summernote css/js-->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-
+<%@ include file="/resources/Lib/Header.jsp" %>
 <style>
     .note-editor{
         width: 1200px;

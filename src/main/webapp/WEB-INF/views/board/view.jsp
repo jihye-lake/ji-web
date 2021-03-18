@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 조회</title>
+<%@ include file="/resources/Lib/Header.jsp" %>
 </head>
 <body>
 
