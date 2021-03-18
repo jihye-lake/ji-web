@@ -9,22 +9,32 @@
 </head>
 <body>
 
-<form method="post">
-	
-	<label>제목</label>
-	${view.title}<br />
-
-	<label>작성자</label>
-	${view.writer}<br />
-
-	<label>내용</label>
-	${view.content}<br />
-	
 	<div>
-		<a href="/board/modify?bno=${view.bno}">게시물 수정</a>, <a href="/board/delete?bno=${view.bno}">게시물 삭제</a>
+		<div style="float:left;">
+			<nav>
+				<%@ include file="nav.jsp" %>
+			</nav>
+		</div>
+		
+		<div style="float:left;margin-left:50px;">
+			<form method="post">
+				
+				<label>제목</label>
+				${view.title}<br />
+			
+				<label>작성자</label>
+				${view.writer}<br />
+			
+				<label>내용</label>
+				${view.content}<br />
+				
+				<div>
+					<a href="../board/modify?bno=${view.bno}">게시물 수정</a>, <a href="../board/delete?bno=${view.bno}">게시물 삭제</a>
+				</div>
+			
+			</form>
+		</div>
 	</div>
-
-</form>
 
 </body>
 </html>

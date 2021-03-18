@@ -9,20 +9,30 @@
 </head>
 <body>
 
-<form method="post">
-	
-	<label>제목</label>
-	<input type="text" name="title" value="${view.title}" /><br />
+	<div>
+		<div style="float:left;">
+			<nav>
+				<%@ include file="nav.jsp" %>
+			</nav>
+		</div>
+		
+		<div style="float:left;margin-left:50px;">
+			<form method="post">
+				
+				<label>제목</label>
+				<input type="text" name="title" value="${view.title}" /><br />
+			
+				<label>작성자</label>
+				<input type="text" name="writer" value="${view.writer}" /><br />
+			
+				<label>내용</label>
+				<textarea cols="50" rows="5" name="content">${view.content}</textarea><br />
+				
+				<button type="submit">완료</button>
 
-	<label>작성자</label>
-	<input type="text" name="writer" value="${view.writer}" /><br />
-
-	<label>내용</label>
-	<textarea cols="50" rows="5" name="content">${view.content}</textarea><br />
-	
-	<button type="submit">완료</button>
-
-</form>
+			</form>
+		</div>
+	</div>
 
 </body>
 </html>

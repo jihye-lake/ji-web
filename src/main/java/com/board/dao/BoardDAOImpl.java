@@ -47,7 +47,7 @@ public class BoardDAOImpl implements BoardDAO {
 	public void delete(int bno) throws Exception {
 		sql.delete(namespace + ".delete", bno);
 	}
-	/*
+	
 	// 게시물 총 개수
 	@Override
 	public int count() throws Exception {
@@ -64,6 +64,6 @@ public class BoardDAOImpl implements BoardDAO {
 		data.put("postNum", postNum);
 		
 		return sql.selectList(namespace + ".listPage", data);
-	}*/
+	}
 
 }

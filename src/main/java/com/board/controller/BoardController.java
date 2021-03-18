@@ -108,7 +108,7 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
-/*	
+	
 	// 게시물 목록 + 페이징 추가
 	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
 	public void getListPage(Model model, @RequestParam("num") int num) throws Exception {
@@ -159,6 +159,6 @@ public class BoardController {
 		
 		// 현재 페이지
 		model.addAttribute("select", num);
-	}*/
+	}
 	
 }

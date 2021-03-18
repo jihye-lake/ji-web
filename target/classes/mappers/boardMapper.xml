@@ -10,6 +10,7 @@
 		select
 			bno, title, content, writer, regDate, viewCnt
 		from tbl_board
+		order by bno desc
 	</select>
 	
 	<!-- 게시물 작성 -->
