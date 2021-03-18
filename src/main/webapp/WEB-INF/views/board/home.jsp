@@ -18,8 +18,8 @@
 		<div style="margin-top:100px;">
 			<c:if test="${member == null}">
 				<form role="form" method="post" autocomplete="off" action="../member/loginCheck">
-					아이디 : <input type="text" id="member_id" name="member_id" placeholder="ID"><br /> 
-					비밀번호 : <input type="password" id="member_pwd" name="member_pwd" placeholder="PWD"><br /><br />
+					아이디 : <input type="text" id="member_id" name="member_id" placeholder="ID" style="width:60px;"><br /> 
+					비밀번호 : <input type="password" id="member_pwd" name="member_pwd" placeholder="PWD" style="width:60px;"><br /><br />
 					<button type="submit">로그인</button>
 				</form>
 			</c:if>
