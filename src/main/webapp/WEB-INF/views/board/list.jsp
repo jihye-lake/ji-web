@@ -4,39 +4,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<%@ include file="/resources/Lib/Header.jsp" %>
 <title>게시물 목록</title>
 </head>
 <body>
 
-	<nav>
-		<%@ include file="nav.jsp" %>
-	</nav>
-
-<table>
-	<thead>
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>작성일</th>
-			<th>작성자</th>
-			<th>조회수</th>
-		</tr>
-	</thead>
-	
-	<tbody>
+	<div>
+		<div style="float:left;">
+			<nav>
+				<%@ include file="nav.jsp" %>
+			</nav>
+		</div>
 		
-		<c:forEach items="${list}" var="list">
-			<tr>
-				<td>${list.bno}</td>
-				<td><a href="../board/view?bno=${list.bno}">${list.title}</a></td>
-				<td>${list.regDate}</td>
-				<td>${list.writer}</td>
-				<td>${list.viewCnt}</td>
-			</tr>
-		</c:forEach>
-		
-	</tbody>
-</table>
-
+		<div style="float:left;margin-left:50px;">
+			<table>
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성일</th>
+						<th>작성자</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					
+					<c:forEach items="${list}" var="list">
+						<tr>
+							<td>${list.bno}</td>
+							<td><a href="../board/view?bno=${list.bno}">${list.title}</a></td>
+							<td>${list.regDate}</td>
+							<td>${list.writer}</td>
+							<td>${list.viewCnt}</td>
+						</tr>
+					</c:forEach>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
 </body>
 </html>
