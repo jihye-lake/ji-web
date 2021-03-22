@@ -20,6 +20,7 @@
 			<table>
 				<thead>
 					<tr>
+						<th><input type='checkbox' id='CheckAll' /></th>
 						<th>번호</th>
 						<th>제목</th>
 						<th>작성일</th>
@@ -32,6 +33,7 @@
 					
 					<c:forEach items="${list}" var="list">
 						<tr>
+							<td><input type='checkbox' id='Check_${list.bno}' class='Check_List' value='${list.bno}' /></td>
 							<td>${list.bno}</td>
 							<td><a href="../board/view?bno=${list.bno}">${list.title}</a></td>
 							<td>${list.regDate}</td>
@@ -39,10 +41,47 @@
 							<td>${list.viewCnt}</td>
 						</tr>
 					</c:forEach>
+						<tr>
+							<td><input type='button' id='DButton_List1' value='삭제' /></td>
+						</tr>
 					
 				</tbody>
 			</table>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#CheckAll").click(function() {
+			
+			<c:forEach items="${list}" var="list">
+			
+			if($("#CheckAll").prop("checked")) 
+				{
+					$("#Check_${list.bno}").prop("checked",true);
+					$("#DButton_List1").val("전체 삭제");
+				}
+			else 
+				{
+					$("#Check_${list.bno}").prop("checked",false);
+					$("#DButton_List1").val("삭제");
+				}
+			
+			</c:forEach>
+			});		
+		
+		$(".Check_List").click(function() {
+			
+			if($(".Check_List:checked").length == $(".Check_List").length) 
+			{
+				$("#DButton_List1").val("전체 삭제");
+			}
+		
+			});	
+			
+		
+	});
+	</script>
+	
 </body>
 </html>
