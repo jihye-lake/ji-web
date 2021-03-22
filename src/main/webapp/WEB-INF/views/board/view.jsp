@@ -29,12 +29,24 @@
 				${view.content}<br />
 				
 				<div>
-					<a href="../board/modify?bno=${view.bno}">게시물 수정</a>, <a href="../board/delete?bno=${view.bno}">게시물 삭제</a>
+					<a href="../board/modify?bno=${view.bno}">게시물 수정</a>, <a onclick="Delete_Board_Click()">게시물 삭제</a>
 				</div>
 			
 			</form>
 		</div>
 	</div>
+<script type="text/javascript">
 
+function Delete_Board_Click() {
+	if (confirm("정말 삭제하시겠습니까?") == true)
+		{
+			alert("성공적으로 삭제되었습니다.");
+			location.replace("../board/delete?bno=${view.bno}");
+		}
+	else
+		return;
+}
+
+</script>
 </body>
 </html>
