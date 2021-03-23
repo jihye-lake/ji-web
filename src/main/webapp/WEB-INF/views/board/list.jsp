@@ -44,7 +44,7 @@
 				</tbody>
 			</table>
 				<div style="text-align:right;">
-					<input type='button' id='DButton_List1' value='삭제' />
+					<input type='button' id='DButton_List1' onclick="DButton_List1()" value='삭제' />
 				</div>
 		</div>
 	</div>
