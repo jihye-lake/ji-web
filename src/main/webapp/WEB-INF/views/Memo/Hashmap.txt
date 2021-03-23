@@ -1,0 +1,22 @@
+Hashmap
+
+burkets(버켓) entry(엔트리)로 구성되어 있음
+
+burkets 의 생김새(빈값은 null)
+
+해시값		   주소
+000			
+001			Address1
+002			Address2
+003
+004			Address4
+
+entries 의 생김새
+(entry 는 실제로 linked-list 로 구성되어 있음)
+
+주소			이름				전화번호
+Address2	홍길동		010-1234-5678
+Address3	춘향이		010-1111-2222
+Address8	이몽룡		010-2222-3333
+Address1	방자			010-3333-4444
+Address2	사또			010-4444-5555

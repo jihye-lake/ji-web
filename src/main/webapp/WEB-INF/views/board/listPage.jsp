@@ -17,7 +17,7 @@
 		</div>
 		
 		<div style="float:left;margin-left:50px;">		
-			<table>
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>번호</th>

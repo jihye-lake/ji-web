@@ -17,7 +17,7 @@
 		</div>
 		
 		<div style="float:left;margin-left:50px;">
-			<table>
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th><input type='checkbox' id='CheckAll' /></th>
@@ -40,13 +40,12 @@
 							<td>${list.writer}</td>
 							<td>${list.viewCnt}</td>
 						</tr>
-					</c:forEach>
-						<tr>
-							<td><input type='button' id='DButton_List1' value='삭제' /></td>
-						</tr>
-					
+					</c:forEach>					
 				</tbody>
 			</table>
+				<div style="text-align:right;">
+					<input type='button' id='DButton_List1' value='삭제' />
+				</div>
 		</div>
 	</div>
 	
@@ -74,7 +73,13 @@
 			
 			if($(".Check_List:checked").length == $(".Check_List").length) 
 			{
+				$("#CheckAll").prop("checked",true);
 				$("#DButton_List1").val("전체 삭제");
+			}
+			else
+			{
+				$("#CheckAll").prop("checked",false);
+				$("#DButton_List1").val("삭제");
 			}
 		
 			});		
