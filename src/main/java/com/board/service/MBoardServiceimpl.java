@@ -20,6 +20,12 @@ public class MBoardServiceimpl implements MBoardService {
 	public List<MBoardVO> list() throws Exception {
 		return mdao.list();
 	}
+
+	// 게시물 작성
+	@Override
+	public void write(MBoardVO vo) throws Exception {
+		mdao.write(vo);		
+	}
 	
 
 }

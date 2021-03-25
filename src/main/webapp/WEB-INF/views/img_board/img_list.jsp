@@ -17,6 +17,10 @@
 		</div>
 		
 		<div style="float:left;margin-left:50px;">
+			<div style="text-align:right;">
+				<input type='button' onclick="javascript:location.href='../img_board/img_write'" value='이미지 작성' />
+			</div>
+			
 			<table class="table table-bordered">
 				<thead>
 					<tr>

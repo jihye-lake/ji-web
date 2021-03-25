@@ -22,6 +22,13 @@ public class MBoardDAOimpl implements MBoardDAO {
 	public List<MBoardVO> list() throws Exception {
 		return sql.selectList(namespace + ".list");
 	}
+
+	// 게시물 작성
+	@Override
+	public void write(MBoardVO vo) throws Exception {
+		sql.insert(namespace + ".write", vo);
+		
+	}
 	
 	
 
