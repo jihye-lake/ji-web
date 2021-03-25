@@ -18,7 +18,7 @@
 	<div>
 		<div style="float:left;">
 			<nav>
-				<%@ include file="nav.jsp" %>
+				<%@ include file="../header/nav.jsp" %>
 			</nav>
 		</div>
 		

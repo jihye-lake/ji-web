@@ -13,7 +13,7 @@
 	
 	
 	<li>
-		<a href="../board/img_wirte">사진 목록</a>
+		<a href="../img_board/img_list">사진 목록</a>
 	</li>
 	
 	<li>

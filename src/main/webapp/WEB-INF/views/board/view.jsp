@@ -12,25 +12,48 @@
 	<div>
 		<div style="float:left;">
 			<nav>
-				<%@ include file="nav.jsp" %>
+				<%@ include file="../header/nav.jsp" %>
 			</nav>
 		</div>
 		
 		<div style="float:left;margin-left:50px;">
 			<form method="post">
-				
-				<label>제목</label>
-				${view.title}<br />
-			
-				<label>작성자</label>
-				${view.writer}<br />
-			
-				<label>내용</label>
-				${view.content}<br />
-				
-				<div>
-					<a href="../board/modify?bno=${view.bno}">게시물 수정</a>, <a onclick="Delete_Board_Click()">게시물 삭제</a>
-				</div>
+				<table class="table table-bordered">
+				<tr>
+					<th>				
+						<label>제목</label>
+					</th>
+					<td>
+						${view.title}<br />
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label>작성자</label>
+					</th>
+					<td>
+						${view.writer}<br />
+					</td>
+				</tr>
+				<tr>
+					<th colspan="2">
+						<label>내용</label>
+					</th>
+				</tr>
+				<tr>
+					<td colspan="2">
+						${view.content}<br />
+					</td>
+					
+				</tr>
+				<tr>
+					<td>
+						
+							<a href="../board/modify?bno=${view.bno}">게시물 수정</a></td><td><a onclick="Delete_Board_Click()">게시물 삭제</a>
+						</td>
+						
+				</tr>
+				</table>
 			
 			</form>
 		</div>
