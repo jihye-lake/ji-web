@@ -30,11 +30,11 @@
 			</c:if>
 		</div>
 		</div>
-		<div style="float:left;margin-left:50px;">			
+		<div style="float:left;margin-left:50px;width:700px;">			
 			<div>
-				<img id="img1" src="<spring:url value='/resources/img/sky.jpg'/>" style="width:300px;height:170px;"/>
-				<img id="img2" src="<spring:url value='/resources/img/snack.jpg'/>" style="width:300px;height:170px;" />
-				<img id="profile" style="background-color:#234dac;width:300px;height:170px;" />
+				<img id="img1" src="<spring:url value='/resources/img/sky.jpg'/>" style="width:200px;height:120px;"/>
+				<img id="img2" src="<spring:url value='/resources/img/snack.jpg'/>" style="width:200px;height:120px;" />
+				<img id="profile" style="background-color:#234dac;width:200px;height:120px;" />
 			</div>
 		</div>
 	</div>
