@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.board.mappers.mboard">
+  
+  	<!-- 게시물 목록 -->
+	<select id="list" resultType="com.board.domain.MBoardVO"> <!-- resultType 은 쿼리의 결과의 형태(DB에 있는 값을 가져올 때 쓰임) -->
+		select
+			m_bno, m_title, m_content, m_writer, regDate, viewCnt
+		from img_board
+		order by m_bno desc
+	</select>
+	
+	<!-- 게시물 작성 -->
+	<insert id="write" parameterType="com.board.domain.MBoardVO">
+		insert into
+			img_board(m_title, m_content, m_writer)
+				values(#{m_title}, #{m_content}, #{m_writer})
+	</insert>
+	
+  </mapper>

@@ -8,8 +8,6 @@
 <%@ include file="/resources/Lib/Header.jsp" %>
 <style>
     .note-editor{
-        width: 1200px;
-        text-align: center;
     }
 
 </style>
@@ -20,7 +18,7 @@
 	<div>
 		<div style="float:left;">
 			<nav>
-				<%@ include file="nav.jsp" %>
+				<%@ include file="../header/nav.jsp" %>
 			</nav>
 		</div>
 		
@@ -35,17 +33,24 @@
 			
 			<!-- 	<label>내용</label>
 				<textarea cols="50" rows="5" name="content"></textarea><br /> -->
-				
-				<input id="summernote" name="content" /> 
+			<!-- <input id="summernote" name="content" />  -->
+				<textarea id="summernote" name="content"></textarea> 
 				<button type="submit">작성</button>
 			
 			</form>
 		</div>
 	</div>
 
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
-  $('#summernote').summernote();
+  $('#summernote').summernote({
+        height: 300,                 // 에디터 높이
+		minHeight: null,             // 최소 높이
+		maxHeight: null,             // 최대 높이
+		focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+		lang: "ko-KR",					// 한글 설정
+		placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
+	  });
 });
 </script>
 </body>

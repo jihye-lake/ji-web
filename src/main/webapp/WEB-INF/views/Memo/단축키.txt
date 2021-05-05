@@ -1,0 +1,3 @@
+Alt + Shift + A -> 범위 설정하여 일괄 입력
+
+Alt + Shift + S -> Setter/Getter 단축키

@@ -11,9 +11,9 @@
 	
 	
 	<div>
-		<div style="float:left;">
+		<div style="float:left;width:204px;">
 			<nav>
-				<%@ include file="nav.jsp" %>
+				<%@ include file="../header/nav.jsp" %>
 			</nav>
 		<div style="margin-top:100px;">
 			<c:if test="${member == null}">
