@@ -11,11 +11,11 @@
 	
 	
 	<div>
-		<div style="float:left;">
+		<div style="float:left;width:204px;">
 			<nav>
-				<%@ include file="nav.jsp" %>
+				<%@ include file="../header/nav.jsp" %>
 			</nav>
-		<div style="margin-top:100px;">
+		<div style="position:absolute;left:221px;height:100%;">
 			<c:if test="${member == null}">
 				<form role="form" method="post" autocomplete="off" action="../member/loginCheck">
 					아이디 : <input type="text" id="member_id" name="member_id" placeholder="ID" style="width:60px;"><br /> 
@@ -30,11 +30,11 @@
 			</c:if>
 		</div>
 		</div>
-		<div style="float:left;margin-left:50px;">			
+		<div style="float:left;margin-left:50px;width:700px;">			
 			<div>
-				<img id="img1" src="<spring:url value='/resources/img/sky.jpg'/>" style="width:300px;height:170px;"/>
-				<img id="img2" src="<spring:url value='/resources/img/snack.jpg'/>" style="width:300px;height:170px;" />
-				<img id="profile" style="background-color:#234dac;width:300px;height:170px;" />
+				<img id="img1" src="<spring:url value='/resources/img/sky.jpg'/>" style="width:200px;height:120px;"/>
+				<img id="img2" src="<spring:url value='/resources/img/snack.jpg'/>" style="width:200px;height:120px;" />
+				<img id="profile" style="background-color:#234dac;width:200px;height:120px;" />
 			</div>
 		</div>
 	</div>

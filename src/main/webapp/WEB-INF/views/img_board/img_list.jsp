@@ -18,7 +18,7 @@
 		
 		<div style="float:left;margin-left:50px;">
 			<div style="text-align:right;">
-				<input type='button' onclick="javascript:location.href='../board/write'" value='게시물 작성' />
+				<input type='button' onclick="javascript:location.href='../img_board/img_write'" value='이미지 작성' />
 			</div>
 			
 			<table class="table table-bordered">
@@ -37,11 +37,11 @@
 					
 					<c:forEach items="${list}" var="list">
 						<tr>
-							<td><input type='checkbox' id='Check_${list.bno}' class='Check_List' value='${list.bno}' /></td>
-							<td>${list.bno}</td>
-							<td><a href="../board/view?bno=${list.bno}">${list.title}</a></td>
+							<td><input type='checkbox' id='Check_${list.m_bno}' class='Check_List' value='${list.m_bno}' /></td>
+							<td>${list.m_bno}</td>
+							<td><a href="../board/view?m_bno=${list.m_bno}">${list.m_title}</a></td>
 							<td>${list.regDate}</td>
-							<td>${list.writer}</td>
+							<td>${list.m_writer}</td>
 							<td>${list.viewCnt}</td>
 						</tr>
 					</c:forEach>					
@@ -61,12 +61,12 @@
 			
 			if($("#CheckAll").prop("checked")) 
 				{
-					$("#Check_${list.bno}").prop("checked",true);
+					$("#Check_${list.m_bno}").prop("checked",true);
 					$("#DButton_List1").val("전체 삭제");
 				}
 			else 
 				{
-					$("#Check_${list.bno}").prop("checked",false);
+					$("#Check_${list.m_bno}").prop("checked",false);
 					$("#DButton_List1").val("삭제");
 				}
 			

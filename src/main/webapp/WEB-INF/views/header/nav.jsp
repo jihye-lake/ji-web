@@ -11,8 +11,17 @@
 		<a href="../board/list">게시물 목록</a>
 	</li>
 	
+	
+	<li>
+		<a href="../img_board/img_list">사진 목록</a>
+	</li>
+	
 	<li>
 		<a href="../board/write">게시물 작성</a>
+	</li>	
+	
+	<li>
+		<a href="../board/garbage">휴지통</a>
 	</li>
 	
 	<li>
