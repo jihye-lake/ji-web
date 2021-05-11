@@ -10,13 +10,13 @@
 <body>
 
 	<div>
-		<div style="float:left;">
+		<div style="position:fixed;left:0;width:220px;">
 			<nav>
 				<%@ include file="../header/nav.jsp" %>
 			</nav>
 		</div>
 		
-		<div style="float:left;margin-left:50px;">
+		<div style="position:absolute;left:221px;height:100%;">
 			<form method="post">
 				<table class="table table-bordered">
 				<tr>
