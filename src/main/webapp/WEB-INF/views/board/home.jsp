@@ -17,10 +17,10 @@
 			</nav>
 		<div style="position:absolute;left:221px;height:100%;">
 			<c:if test="${member == null}">
-				<form role="form" method="post" autocomplete="off" action="../member/loginCheck">
-					아이디 : <input type="text" id="member_id" name="member_id" placeholder="ID" style="width:60px;"><br /> 
-					비밀번호 : <input type="password" id="member_pwd" name="member_pwd" placeholder="PWD" style="width:60px;"><br /><br />
-					<button type="submit">로그인</button>
+				<form role="form" method="post" autocomplete="off">
+					아이디 : <input type="text" name="member_id" id="member_id" placeholder="아이디" style="width:60px;" onkeyup="saveValue(this);" /><br /> 
+					비밀번호 : <input type="password" name="member_pwd" id="member_pwd" placeholder="비밀번호" style="width:60px;" onkeyup="saveValue(this);" /><br /><br />
+					<button type="button" id="login" onclick="">로그인</button> <button type="button" onclick="location.href='../member/sign_up'">회원가입</button>
 				</form>
 			</c:if>
 			
@@ -40,7 +40,8 @@
 	</div>
 	<script type="text/javascript">
 	
-	$(document).ready(function(){	
+	$(document).ready(function(){
+			
 		$("#img1").click(function() {
 			$("#profile").attr('src','<spring:url value="/resources/img/sky.jpg"/>')
 			});
@@ -48,6 +49,79 @@
 			$("#profile").attr('src','<spring:url value="/resources/img/snack.jpg"/>')
 			});
 	});		
+/*
+	function fn_login(){ // 아이디 중복체크 함수 실행(Ajax)
+		$.ajax({
+			url : "IdPwChk",
+			type : "post",
+			dataType : "json",
+			data : {"member_id" : $("#member_id").val(),"member_pwd" : $("#member_pwd").val()},
+
+			success : function(data) {
+				if($("#member_id").val()=="") {
+					alert("아이디를 입력해 주십시오.");
+					$("#member_id").focus();
+					}
+				else if(data==0) {
+					alert("아이디 혹은 비밀번호를 확인해 주십시오.");
+					$("#member_id").focus();
+					}
+				else if($("#member_pwd").val()=="") {
+					alert("비밀번호를 입력해 주십시오.");
+					$("#member_pwd").focus();
+					}
+				else if(data==1) {
+					alert("로그인 되었습니다");
+					location.href="../member/loginCheck"
+					}
+				},
+			error: function(jqXHR, exception) {
+		        if (jqXHR.status === 0) {
+		            alert('Not connect.\n Verify Network.');
+		        }
+		        else if (jqXHR.status == 400) {
+		            alert('Server understood the request, but request content was invalid. [400]');
+		        }
+		        else if (jqXHR.status == 401) {
+		            alert('Unauthorized access. [401]');
+		        }
+		        else if (jqXHR.status == 403) {
+		            alert('Forbidden resource can not be accessed. [403]');
+		        }
+		        else if (jqXHR.status == 404) {
+		            alert('Requested page not found. [404]');
+		        }
+		        else if (jqXHR.status == 500) {
+		            alert('Internal server error. [500]');
+		        }
+		        else if (jqXHR.status == 503) {
+		            alert('Service unavailable. [503]');
+		        }
+		        else if (exception === 'parsererror') {
+		            alert('Requested JSON parse failed. [Failed]');
+		        }
+		        else if (exception === 'timeout') {
+		            alert('Time out error. [Timeout]');
+		        }
+		        else if (exception === 'abort') {
+		            alert('Ajax request aborted. [Aborted]');
+		        }
+		        else {
+		            alert('Uncaught Error.n' + jqXHR.responseText);
+		        }
+		    }
+			})
+		}
+*/		
+
+	function saveValue(e){
+		var member_id=$("#member_id").val();
+		var member_pw=$("#member_pw").val();
+		
+        var id = e.member_id;  // get the sender's id to save it . 
+        var pw = e.member_pw; // get the value. 
+        localStorage.setItem(id, pw);// Every time user writing something, the localStorage's value will override . 
+    }
 	
 	</script>
 </body>

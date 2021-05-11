@@ -14,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.board.domain.BoardVO;
+import com.board.domain.MemberVO;
 import com.board.service.BoardService;
 
 @Controller
@@ -45,6 +47,17 @@ public class BoardController {
 		model.addAttribute("serverTime", formattedDate );
 		
 	}
+	
+/*	
+	// 로그인 아이디&비번 체크
+	@ResponseBody
+	@RequestMapping(value = "/IdPwChk", method = RequestMethod.POST)
+	public int IdPwChk(MemberVO mvo) throws Exception {
+		logger.info("_______아이디&비밀번호 중복체크를 합니다_______");
+		int result = service.IdPwChk(mvo);
+		return result;
+	}
+*/	
 
 	// 게시물 목록
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

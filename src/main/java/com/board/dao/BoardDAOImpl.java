@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.board.domain.BoardVO;
+import com.board.domain.MemberVO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -65,5 +66,12 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sql.selectList(namespace + ".listPage", data);
 	}
+/*
+	// 로그인시 아이디&비번체크	
+	@Override
+	public int IdPwChk(MemberVO mvo) throws Exception {
+		return sql.selectOne(namespace + ".IdPwChk", mvo);
+	}
+*/	
 
 }

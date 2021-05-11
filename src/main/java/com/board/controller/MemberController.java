@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.board.domain.MemberVO;
@@ -69,9 +70,20 @@ public class MemberController {
 		
 		memberService.signUp(mvo);
 		
-		return "member/login";
+		return "board/home";
 	}
 	
+	//아이디 중복체크
+	@ResponseBody
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public int idChk(MemberVO mvo) throws Exception {
+		logger.info("_____________아이디 중복체크를 합니다___________");
+		int result = memberService.idChk(mvo);
+		return result;
+		
+	}
+	
+/*	
 	// 로그인
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	public String loginCheck(MemberVO mvo, HttpServletRequest req) throws Exception {
@@ -94,6 +106,7 @@ public class MemberController {
 		
 		return "board/home";
 	}
+*/	
 
 	/*
 	// 로그인

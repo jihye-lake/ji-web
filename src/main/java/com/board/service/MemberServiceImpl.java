@@ -29,4 +29,10 @@ public class MemberServiceImpl implements MemberService {
 		dao.logout(session);
 		
 	}
+
+	// 아이디 중복체크
+	@Override
+	public int idChk(MemberVO mvo) throws Exception {		
+		return dao.idChk(mvo);
+	}
 }

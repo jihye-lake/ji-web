@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.board.dao.BoardDAO;
 import com.board.domain.BoardVO;
+import com.board.domain.MemberVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -57,5 +58,13 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> listPage(int displayPost, int postNum) throws Exception {
 		return dao.listPage(displayPost, postNum);
 	}
+
+/*	
+	// 로그인시 아이디&비번체크
+	@Override
+	public int IdPwChk(MemberVO mvo) throws Exception {
+		return dao.IdPwChk(mvo);
+	}
+*/	
 
 }

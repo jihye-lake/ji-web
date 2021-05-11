@@ -3,6 +3,7 @@ package com.board.service;
 import java.util.List;
 
 import com.board.domain.BoardVO;
+import com.board.domain.MemberVO;
 
 public interface BoardService {
 
@@ -26,4 +27,8 @@ public interface BoardService {
 	
 	// 게시물 목록 + 페이징
 	public List<BoardVO> listPage(int displayPost, int postNum) throws Exception;
+/*
+	// 로그인시 아이디&비번체크
+	public int IdPwChk(MemberVO mvo) throws Exception;
+*/	
 }

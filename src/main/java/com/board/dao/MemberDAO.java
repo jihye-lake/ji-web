@@ -15,5 +15,8 @@ public interface MemberDAO {
 	// 로그아웃
 	public void logout(HttpSession session) throws Exception;
 
+	// 아이디 중복체크
+	public int idChk(MemberVO mvo) throws Exception;
+
 
 }

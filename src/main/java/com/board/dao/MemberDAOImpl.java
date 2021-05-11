@@ -20,7 +20,7 @@ public class MemberDAOImpl implements MemberDAO {
 	// 회원가입
 	@Override
 	public void signUp(MemberVO mvo) throws Exception {
-		sql.insert(namespace + ".login", mvo);
+		sql.insert(namespace + ".signup", mvo);
 	}
 	
 	// 로그인
@@ -39,6 +39,12 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void logout(HttpSession session) throws Exception {
 		session.invalidate();		
+	}
+
+	// 아이디 중복체크
+	@Override
+	public int idChk(MemberVO mvo) throws Exception {
+		return sql.selectOne(namespace + ".idChk", mvo);
 	}
 
 }
