@@ -38,7 +38,7 @@ public class MemberDAOImpl implements MemberDAO {
 	// 로그아웃
 	@Override
 	public void logout(HttpSession session) throws Exception {
-		session.invalidate();		
+		session.invalidate();
 	}
 
 	// 아이디 중복체크

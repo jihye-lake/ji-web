@@ -1,10 +1,11 @@
 package com.board.controller;
 
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -159,16 +160,26 @@ public class MemberController {
 */
 	
 	// 로그아웃
-	@RequestMapping("logout")
-	public String logout(HttpSession session) throws Exception {
+	// @RequestMapping("logout")
+	@RequestMapping(value = "/logout", method = {RequestMethod.POST, RequestMethod.GET})
+	public String logout(HttpSession session, HttpServletResponse response) throws Exception {
+		
 		
 		memberService.logout(session);
 		ModelAndView mav = new ModelAndView();
 //		mav.setViewName("member/login");
 		mav.addObject("msg", "logout");
+		
+/*		response.setContentType("text/html; charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('성공적으로 로그아웃되었습니다.');</script>");
+		out.flush();
+*/		
 		logger.info("__________로그아웃 완료________");
 		
-		return "board/home";
+		return "redirect:/board/home";
+		//return"../board/home";
 	}
 
 }

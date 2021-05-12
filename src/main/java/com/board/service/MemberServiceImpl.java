@@ -14,16 +14,19 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberDAO dao;
 	
+	// 회원가입
 	@Override
 	public void signUp(MemberVO mvo) throws Exception {
 		dao.signUp(mvo);
 	}	
 
+	// 로그인
 	@Override
 	public MemberVO loginCheck(MemberVO mvo) throws Exception {		
 		return dao.loginCheck(mvo);
 	}
 
+	// 로그아웃
 	@Override
 	public void logout(HttpSession session) throws Exception {
 		dao.logout(session);

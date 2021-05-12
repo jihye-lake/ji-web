@@ -59,12 +59,17 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listPage(displayPost, postNum);
 	}
 
-/*	
+	// 로그인
+	@Override
+	public MemberVO login(MemberVO mvo) throws Exception {
+		return dao.login(mvo);
+	}
+	
 	// 로그인시 아이디&비번체크
 	@Override
 	public int IdPwChk(MemberVO mvo) throws Exception {
 		return dao.IdPwChk(mvo);
 	}
-*/	
-
+	
 }
+

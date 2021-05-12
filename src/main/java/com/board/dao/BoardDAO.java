@@ -27,9 +27,11 @@ public interface BoardDAO {
 	
 	// 게시물 목룍 + 페이징
 	public List<BoardVO> listPage(int displayPost, int postNum) throws Exception;
-/*
+
 	// 로그인시 아이디&비번체크
 	public int IdPwChk(MemberVO mvo) throws Exception;
-*/	
+
+	// 로그인
+	public MemberVO login(MemberVO mvo) throws Exception;	
 	
 }

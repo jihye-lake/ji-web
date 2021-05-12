@@ -17,16 +17,18 @@
 			</nav>
 		<div style="position:absolute;left:221px;height:100%;">
 			<c:if test="${member == null}">
-				<form role="form" method="post" autocomplete="off">
+				<form role="form" action="./login" method="post" autocomplete="off">
 					아이디 : <input type="text" name="member_id" id="member_id" placeholder="아이디" style="width:60px;" onkeyup="saveValue(this);" /><br /> 
 					비밀번호 : <input type="password" name="member_pwd" id="member_pwd" placeholder="비밀번호" style="width:60px;" onkeyup="saveValue(this);" /><br /><br />
-					<button type="button" id="login" onclick="">로그인</button> <button type="button" onclick="location.href='../member/sign_up'">회원가입</button>
+					<button type="submit" id="login" onclick="fn_login();">로그인</button> <button type="button" onclick="location.href='../member/sign_up'">회원가입</button>
 				</form>
 			</c:if>
 			
 			<c:if test="${member != null}">
-				<p>${member.member_id} 님 환영합니다.</p>
-				<a href="../member/logout">로그아웃</a>
+				<form action="../member/logout">
+					<p>${member.member_id} 님 환영합니다.</p>
+					<button type="submit" id="logout">로그아웃</button>
+				</form>
 			</c:if>
 		</div>
 		</div>
@@ -48,8 +50,8 @@
 		$("#img2").click(function() {
 			$("#profile").attr('src','<spring:url value="/resources/img/snack.jpg"/>')
 			});
-	});		
-/*
+	});	
+
 	function fn_login(){ // 아이디 중복체크 함수 실행(Ajax)
 		$.ajax({
 			url : "IdPwChk",
@@ -72,7 +74,6 @@
 					}
 				else if(data==1) {
 					alert("로그인 되었습니다");
-					location.href="../member/loginCheck"
 					}
 				},
 			error: function(jqXHR, exception) {
@@ -112,7 +113,7 @@
 		    }
 			})
 		}
-*/		
+		
 
 	function saveValue(e){
 		var member_id=$("#member_id").val();
@@ -122,6 +123,7 @@
         var pw = e.member_pw; // get the value. 
         localStorage.setItem(id, pw);// Every time user writing something, the localStorage's value will override . 
     }
+
 	
 	</script>
 </body>
