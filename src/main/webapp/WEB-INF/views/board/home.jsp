@@ -15,7 +15,7 @@
 			<nav>
 				<%@ include file="../header/nav.jsp" %>
 			</nav>
-		<div style="margin-top:100px;">
+		<div style="position:absolute;left:221px;height:100%;">
 			<c:if test="${member == null}">
 				<form role="form" method="post" autocomplete="off" action="../member/loginCheck">
 					아이디 : <input type="text" id="member_id" name="member_id" placeholder="ID" style="width:60px;"><br /> 
