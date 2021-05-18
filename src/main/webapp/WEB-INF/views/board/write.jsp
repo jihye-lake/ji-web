@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 작성</title>
-<%@ include file="/resources/Lib/Header.jsp" %>
+<%@ include file="/resources/navi/Header.jsp" %>
 <style>
     .note-editor{
     }

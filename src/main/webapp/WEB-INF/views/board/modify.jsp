@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 수정</title>
-<%@ include file="/resources/Lib/Header.jsp" %>
+<%@ include file="/resources/navi/Header.jsp" %>
 </head>
 <body>
 

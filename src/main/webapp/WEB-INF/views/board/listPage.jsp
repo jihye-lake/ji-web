@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file="/resources/Lib/Header.jsp" %>
+<%@ include file="/resources/navi/Header.jsp" %>
 <title>게시물 목록</title>
 </head>
 <body>

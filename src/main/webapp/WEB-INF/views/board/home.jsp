@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<%@ include file="/resources/Lib/Header.jsp" %>
+<%@ include file="/resources/navi/Header.jsp" %>
 <title>Home</title>
 </head>
 <body>	
