@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.board.domain.BoardVO;
-import com.board.domain.MemberVO;
 import com.board.service.BoardService;
 
 @Controller
@@ -48,42 +44,6 @@ public class BoardController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-	}
-	
-	
-	// 로그인 아이디&비번 체크
-	@ResponseBody
-	@RequestMapping(value = "/IdPwChk", method = RequestMethod.POST)
-	public int IdPwChk(MemberVO mvo) throws Exception {
-		logger.info("_______아이디&비밀번호 중복체크를 합니다_______");
-		int result = service.IdPwChk(mvo);
-		return result;
-	}
-	
-	
-	// 로그인
-	@RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET})
-	public String login(MemberVO mvo, HttpServletRequest req) throws Exception {
-		
-		logger.info("____________로그인을 할 겁니다.___________");
-		
-		logger.info(mvo.getMember_id() + "아이디");
-		logger.info(mvo.getMember_pwd() + "비밀번호");
-		logger.info("________아이디와 비밀번호는 준비되었습니다._______");
-		
-		HttpSession session = req.getSession();
-		
-		MemberVO login = service.login(mvo);
-		
-		logger.info("________여기까지 왔나?_______");
-		
-		if(login == null) {
-			session.setAttribute("member", null);
-		} else {
-			session.setAttribute("member", login);
-		}
-		
-		return "redirect:/board/home";
 	}
 	
 

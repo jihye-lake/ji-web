@@ -20,12 +20,6 @@ public class MemberServiceImpl implements MemberService {
 		dao.signUp(mvo);
 	}	
 
-	// 로그인
-	@Override
-	public MemberVO loginCheck(MemberVO mvo) throws Exception {		
-		return dao.loginCheck(mvo);
-	}
-
 	// 로그아웃
 	@Override
 	public void logout(HttpSession session) throws Exception {
@@ -38,4 +32,16 @@ public class MemberServiceImpl implements MemberService {
 	public int idChk(MemberVO mvo) throws Exception {		
 		return dao.idChk(mvo);
 	}
+
+	// 로그인
+	@Override
+	public MemberVO login(MemberVO mvo) throws Exception {
+		return dao.login(mvo);
+	}
+	
+	// 로그인시 아이디&비번체크
+	@Override
+	public int IdPwChk(MemberVO mvo) throws Exception {
+		return dao.IdPwChk(mvo);
+	}	
 }

@@ -9,10 +9,6 @@
 </head>
 <body>
 
-	<h1>Hello World!</h1>
-	<p>The time on the server is ${serverTime}.</p>
-	
-	<br />
 	
 	<div>
 		<div style="float:left;width:204px;">
@@ -42,6 +38,11 @@ $(document).ready(function(){
 			alert("아이디 중복확인을 해주십시오.");
 			event.preventDefault();
 			}
+		else if($("#member_id").val()=="") {
+			alert("아이디를 입력해 주십시오.");
+			$("#idChk").prop("value","");
+			event.preventDefault();
+			}
 		else if($("#member_pwd").val()==""){
 			alert("비밀번호를 입력해 주십시오.");
 			$("#member_pwd").focus();
@@ -56,7 +57,7 @@ $(document).ready(function(){
 			alert("비밀번호가 일치하지 않습니다.");
 			$("#member_pwd_ck").focus();
 			event.preventDefault();
-			}				
+			}
 		});
 
 	

@@ -18,20 +18,23 @@
 		<div style="position:absolute;left:221px;height:100%;">
 			<c:if test="${member == null}">
 				<form role="form" action="./login" method="post" autocomplete="off">
-					아이디 : <input type="text" name="member_id" id="member_id" placeholder="아이디" style="width:60px;" onkeyup="saveValue(this);" /><br /> 
+					아이디 : <input type="text" name="member_id" id="member_id" placeholder="아이디" style="width:60px;" onkeyup="saveValue(this);" /><br />
+					<span id="idTxt"></span><br>
 					비밀번호 : <input type="password" name="member_pwd" id="member_pwd" placeholder="비밀번호" style="width:60px;" onkeyup="saveValue(this);" /><br /><br />
-					<button type="submit" id="login" onclick="fn_login();">로그인</button> <button type="button" onclick="location.href='../member/sign_up'">회원가입</button>
+					<button type="button" id="login" onclick="fn_login();">로그인</button> <button type="button" onclick="location.href='../member/sign_up'">회원가입</button>
 				</form>
 			</c:if>
 			
 			<c:if test="${member != null}">
-				<form action="../member/logout">
+				<form action="">
 					<p>${member.member_id} 님 환영합니다.</p>
-					<button type="submit" id="logout">로그아웃</button>
+					<button type="button" id="member_info" onclick="location.href='../member/member_info'">회원정보변경</button>
+					<button type="button" id="logout" onclick="location.href='../member/logout'">로그아웃</button>
 				</form>
 			</c:if>
 		</div>
 		</div>
+<!-- 		
 		<div style="float:left;margin-left:50px;width:700px;">			
 			<div>
 				<img id="img1" src="<spring:url value='/resources/img/sky.jpg'/>" style="width:200px;height:120px;"/>
@@ -39,6 +42,7 @@
 				<img id="profile" style="background-color:#234dac;width:200px;height:120px;" />
 			</div>
 		</div>
+ -->		
 	</div>
 	<script type="text/javascript">
 	
@@ -52,9 +56,10 @@
 			});
 	});	
 
-	function fn_login(){ // 아이디 중복체크 함수 실행(Ajax)
+
+	function fn_login(){ // Ajax 로그인 함수 실행 
 		$.ajax({
-			url : "IdPwChk",
+			url : "../member/IdPwChk",
 			type : "post",
 			dataType : "json",
 			data : {"member_id" : $("#member_id").val(),"member_pwd" : $("#member_pwd").val()},
@@ -74,6 +79,7 @@
 					}
 				else if(data==1) {
 					alert("로그인 되었습니다");
+					location.href="../board/home";
 					}
 				},
 			error: function(jqXHR, exception) {

@@ -67,22 +67,4 @@ public class BoardDAOImpl implements BoardDAO {
 		return sql.selectList(namespace + ".listPage", data);
 	}
 
-	// 로그인시 아이디&비번체크	
-	@Override
-	public int IdPwChk(MemberVO mvo) throws Exception {
-		return sql.selectOne(namespace + ".IdPwChk", mvo);
-	}
-
-
-	// 로그인
-	@Override
-	public MemberVO login(MemberVO mvo) throws Exception {
-		return sql.selectOne(namespace + ".login", mvo);
-		
-		/* String name = sqlSession.selectOne("memberMapper.loginCheck", mvo); */
-		
-		// 검색이 안 되면 0을 반환해주기 때문에 0과 비교해서 참이면 false, 틀리면 true 를 반환
-		/* return (Integer.parseInt(name)==0)?false:true; */
-	}
-
 }

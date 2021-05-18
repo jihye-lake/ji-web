@@ -37,6 +37,7 @@
 			where bno	= #{bno}
 	</update>
 	
+	
 	<!-- 게시물 삭제 -->
 	<delete id="delete" parameterType="int">
 		delete
@@ -44,10 +45,12 @@
 		where bno = #{bno}
 	</delete>
 
+
 	<!-- 게시물 총 개수 -->
 	<select id="count" resultType="int">
 		select count(bno) from tbl_board
 	</select>
+	
 	
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="listPage" parameterType="hashMap" resultType="com.board.domain.BoardVO">
@@ -58,16 +61,5 @@
 			limit #{displayPost}, #{postNum}
 	</select> 
 
-	
-  	<!-- 아이디 중복체크 --> 
-  	<select id="IdPwChk" resultType="int">
-  		SELECT count(*) from member
-  		WHERE member_id = #{member_id} AND member_pwd = #{member_pwd}
-  	</select>
-  	 
-  	 <select id="login" resultType="com.board.domain.MemberVO">
-		SELECT member_id, member_pwd FROM member 
-		WHERE member_id = #{member_id} AND member_pwd = #{member_pwd}
-  	</select>
 
 </mapper>
