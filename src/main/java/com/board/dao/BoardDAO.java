@@ -3,6 +3,7 @@ package com.board.dao;
 import java.util.List;
 
 import com.board.domain.BoardVO;
+import com.board.domain.MemberVO;
 
 public interface BoardDAO {
 	
@@ -26,5 +27,5 @@ public interface BoardDAO {
 	
 	// 게시물 목룍 + 페이징
 	public List<BoardVO> listPage(int displayPost, int postNum) throws Exception;
-	
+
 }

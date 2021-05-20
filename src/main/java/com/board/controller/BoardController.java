@@ -45,6 +45,7 @@ public class BoardController {
 		model.addAttribute("serverTime", formattedDate );
 		
 	}
+	
 
 	// 게시물 목록
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

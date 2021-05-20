@@ -14,19 +14,34 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberDAO dao;
 	
+	// 회원가입
 	@Override
 	public void signUp(MemberVO mvo) throws Exception {
 		dao.signUp(mvo);
 	}	
 
-	@Override
-	public MemberVO loginCheck(MemberVO mvo) throws Exception {		
-		return dao.loginCheck(mvo);
-	}
-
+	// 로그아웃
 	@Override
 	public void logout(HttpSession session) throws Exception {
 		dao.logout(session);
 		
 	}
+
+	// 아이디 중복체크
+	@Override
+	public int idChk(MemberVO mvo) throws Exception {		
+		return dao.idChk(mvo);
+	}
+
+	// 로그인
+	@Override
+	public MemberVO login(MemberVO mvo) throws Exception {
+		return dao.login(mvo);
+	}
+	
+	// 로그인시 아이디&비번체크
+	@Override
+	public int IdPwChk(MemberVO mvo) throws Exception {
+		return dao.IdPwChk(mvo);
+	}	
 }

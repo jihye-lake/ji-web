@@ -20,14 +20,33 @@ public class MemberDAOImpl implements MemberDAO {
 	// 회원가입
 	@Override
 	public void signUp(MemberVO mvo) throws Exception {
-		sql.insert(namespace + ".login", mvo);
+		sql.insert(namespace + ".signUp", mvo);
 	}
 	
+	// 로그아웃
+	@Override
+	public void logout(HttpSession session) throws Exception {
+		session.invalidate();
+	}
+
+	// 아이디 중복체크
+	@Override
+	public int idChk(MemberVO mvo) throws Exception {
+		return sql.selectOne(namespace + ".idChk", mvo);
+	}
+	
+
+	// 로그인시 아이디&비번체크	
+	@Override
+	public int IdPwChk(MemberVO mvo) throws Exception {
+		return sql.selectOne(namespace + ".IdPwChk", mvo);
+	}
+
+
 	// 로그인
 	@Override
-	public MemberVO loginCheck(MemberVO mvo) throws Exception {
-		
-		return sql.selectOne(namespace + ".loginCheck", mvo);
+	public MemberVO login(MemberVO mvo) throws Exception {
+		return sql.selectOne(namespace + ".login", mvo);
 		
 		/* String name = sqlSession.selectOne("memberMapper.loginCheck", mvo); */
 		
@@ -35,10 +54,5 @@ public class MemberDAOImpl implements MemberDAO {
 		/* return (Integer.parseInt(name)==0)?false:true; */
 	}
 
-	// 로그아웃
-	@Override
-	public void logout(HttpSession session) throws Exception {
-		session.invalidate();		
-	}
 
 }

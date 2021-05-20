@@ -11,15 +11,22 @@
   			values(#{member_id}, #{member_pwd})
   	</insert>
   	
-  	<!-- 로그인 -->
-  	<!-- <![CDATA[
-			SELECT count(*) FROM member
-			WHERE member_id = #{member_id} AND member_pwd = #{member_pwd}
-		]]> -->
+  	<!-- 아이디 중복체크 -->
+  	<select id="idChk" resultType="int">
+  		SELECT count(*) from member
+  		WHERE member_id = #{member_id}
+  	</select>
   	
-  	<select id="loginCheck" resultType="com.board.domain.MemberVO">
-			SELECT member_id, member_pwd FROM member 
-			WHERE member_id = #{member_id} AND member_pwd = #{member_pwd}
+  	<!-- 로그인시 아이디, 비밀번호 일치여부 확인 --> 
+  	<select id="IdPwChk" resultType="int">
+  		SELECT count(*) from member
+  		WHERE member_id = #{member_id} AND member_pwd = #{member_pwd}
+  	</select>
+  	 
+  	 <!-- 로그인 -->
+  	 <select id="login" resultType="com.board.domain.MemberVO">
+		SELECT member_id, member_pwd FROM member 
+		WHERE member_id = #{member_id} AND member_pwd = #{member_pwd}
   	</select>
   	
   </mapper>

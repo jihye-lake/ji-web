@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.board.dao.BoardDAO;
 import com.board.domain.BoardVO;
+import com.board.domain.MemberVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -58,4 +59,6 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listPage(displayPost, postNum);
 	}
 
+	
 }
+

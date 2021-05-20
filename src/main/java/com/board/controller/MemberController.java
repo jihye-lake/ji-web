@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.board.domain.MemberVO;
@@ -63,18 +65,37 @@ public class MemberController {
 	public String postSignUp(MemberVO mvo) throws Exception {
 		logger.info("__________회원가입을 성공적으로 완료했습니다__________");
 		
+		/* 비밀번호 암호화
 		String inputPass = mvo.getMember_pwd();
 		String pass = passwordEncoder.encode(inputPass);
 		mvo.setMember_pwd(pass);
+		*/
 		
 		memberService.signUp(mvo);
 		
-		return "member/login";
+		return "board/home";
 	}
 	
-	// 로그인
-	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
-	public String loginCheck(MemberVO mvo, HttpServletRequest req) throws Exception {
+	//아이디 중복체크	
+	@ResponseBody
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public int idChk(MemberVO mvo) throws Exception {
+		logger.info("_____________아이디 중복체크를 합니다___________");
+		int result = memberService.idChk(mvo);
+		return result;
+		
+	}
+	
+	
+	// 로그인 아이디&비번 체크
+	@ResponseBody
+	@RequestMapping(value = "/IdPwChk", method = RequestMethod.POST)
+	public int IdPwChk(MemberVO mvo, HttpSession session) throws Exception {
+		//public int IdPwChk(MemberVO mvo, HttpServletRequest req) throws Exception {
+		logger.info("_______아이디&비밀번호 중복체크를 합니다_______");
+		int result = memberService.IdPwChk(mvo);
+		
+		logger.info("___________________________________________________________");
 		
 		logger.info("____________로그인을 할 겁니다.___________");
 		
@@ -82,18 +103,25 @@ public class MemberController {
 		logger.info(mvo.getMember_pwd() + "비밀번호");
 		logger.info("________아이디와 비밀번호는 준비되었습니다._______");
 		
-		HttpSession session = req.getSession();
+		//HttpSession session = req.getSession();
 		
-		MemberVO login = memberService.loginCheck(mvo);
+		MemberVO login = memberService.login(mvo);
+		
+		logger.info("________여기까지 왔나?_______");
 		
 		if(login == null) {
 			session.setAttribute("member", null);
 		} else {
 			session.setAttribute("member", login);
 		}
-		
-		return "board/home";
+		return result;
 	}
+	
+	@RequestMapping(value = "/member_info", method = RequestMethod.GET)
+	public void getMember_info() throws Exception {
+		logger.info("_____________회원정보 변경_____________");
+	}
+	
 
 	/*
 	// 로그인
@@ -146,16 +174,26 @@ public class MemberController {
 */
 	
 	// 로그아웃
-	@RequestMapping("logout")
-	public String logout(HttpSession session) throws Exception {
+	// @RequestMapping("logout")
+	@RequestMapping(value = "/logout", method = {RequestMethod.POST, RequestMethod.GET})
+	public String logout(HttpSession session, HttpServletResponse response) throws Exception {
+		
 		
 		memberService.logout(session);
 		ModelAndView mav = new ModelAndView();
 //		mav.setViewName("member/login");
 		mav.addObject("msg", "logout");
+		
+/*		response.setContentType("text/html; charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('성공적으로 로그아웃되었습니다.');</script>");
+		out.flush();
+*/		
 		logger.info("__________로그아웃 완료________");
 		
-		return "board/home";
+		return "redirect:/board/home";
+		//return"../board/home";
 	}
 
 }
