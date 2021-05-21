@@ -3,7 +3,7 @@ package com.board.dao;
 import java.util.List;
 
 import com.board.domain.BoardVO;
-import com.board.domain.MemberVO;
+import com.board.domain.tags_BoardVO;
 
 public interface BoardDAO {
 	

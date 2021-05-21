@@ -1,5 +1,7 @@
 package com.board.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.board.dao.MemberDAO;
 import com.board.domain.MemberVO;
+import com.board.domain.tags_BoardVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -43,5 +46,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int IdPwChk(MemberVO mvo) throws Exception {
 		return dao.IdPwChk(mvo);
-	}	
+	}
+
+	// 태그 목록
+	public List<tags_BoardVO> taglist() throws Exception {
+		return dao.taglist();
+	}
+
+	// 회원가입_태그추가
+	public void signUp_tags(tags_BoardVO tvo) throws Exception {
+		dao.signUp_tags(tvo);
+		
+	}
 }

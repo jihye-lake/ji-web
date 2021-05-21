@@ -1,5 +1,7 @@
 package com.board.dao;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.board.domain.MemberVO;
+import com.board.domain.tags_BoardVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -52,6 +55,17 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		// 검색이 안 되면 0을 반환해주기 때문에 0과 비교해서 참이면 false, 틀리면 true 를 반환
 		/* return (Integer.parseInt(name)==0)?false:true; */
+	}
+	
+	// 태그 목록
+	public List<tags_BoardVO> taglist() throws Exception {
+		return sql.selectList(namespace + ".taglist");
+	}
+
+	// 회원가입_태그추가
+	public void signUp_tags(tags_BoardVO tvo) throws Exception {
+		sql.insert(namespace + ".signUp_tags", tvo);
+		
 	}
 
 

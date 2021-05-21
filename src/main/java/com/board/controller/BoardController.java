@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.board.domain.BoardVO;
+import com.board.domain.tags_BoardVO;
 import com.board.service.BoardService;
 
 @Controller
@@ -29,9 +30,10 @@ public class BoardController {
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public void getHome(Locale locale, Model model) {
+	public void getHome(Locale locale, Model model, tags_BoardVO tvo) throws Exception {
 		
 		/* logger.info("Welcome home! The client locale is {}.", locale); */
 		
