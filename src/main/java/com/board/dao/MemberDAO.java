@@ -1,8 +1,11 @@
 package com.board.dao;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import com.board.domain.MemberVO;
+import com.board.domain.tags_BoardVO;
 
 public interface MemberDAO {
 	
@@ -19,7 +22,13 @@ public interface MemberDAO {
 	public int IdPwChk(MemberVO mvo) throws Exception;
 
 	// 로그인
-	public MemberVO login(MemberVO mvo) throws Exception;	
+	public MemberVO login(MemberVO mvo) throws Exception;
+
+	// 태그 목록
+	public List<tags_BoardVO> taglist() throws Exception;
+
+	// 회원가입_태그추가
+	public void signUp_tags(tags_BoardVO tvo) throws Exception;
 	
 
 }

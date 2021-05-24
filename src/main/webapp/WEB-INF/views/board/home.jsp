@@ -32,6 +32,7 @@
 					<button type="button" id="logout" onclick="location.href='../member/logout'">로그아웃</button>
 				</form>
 			</c:if>
+			
 		</div>
 		</div>
 <!-- 		

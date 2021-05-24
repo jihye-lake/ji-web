@@ -6,6 +6,7 @@
 <%@ include file="/resources/navi/Header.jsp" %>
 <meta charset="UTF-8">
 <title>Sign Up</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css" rel="stylesheet" /> <!-- select2 사용 위해서 추가 -->
 </head>
 <body>
 
@@ -22,6 +23,19 @@
 				<input type="password" name="member_pwd" id="member_pwd" placeholder="비밀번호"><br>
 				<input type="password" id="member_pwd_ck" placeholder="비밀번호확인"><br>
 				<span id="pwd_ck"></span><br>
+				
+				<div style="width:500px;float:right;">
+					<select class="form-control" id="select_tags">
+						<c:forEach items="${taglist}" var="taglist">
+							<option id="option${taglist.NO}" value="option${taglist.NO}">${taglist.tags}</option>
+						</c:forEach>
+					</select>
+					
+					<button type="button" id="tuika_option">추가</button>
+					
+					<span id="tuika_span"></span>
+				</div>
+				
 				<button id="sign_up">회원가입</button>
 			</form>
 		</div>
@@ -29,7 +43,28 @@
 	
 	</div>
 	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script> <!-- select2 사용 위해서 추가 -->
 <script type="text/javascript">
+// select2 초기화
+$('select').select2(); <!-- select2 사용 위해서 추가 -->
+
+
+$("#tuika_option").on("click",function(){
+	var tags = $("#select_tags option:selected").text();
+	var tags_val = $("#select_tags option:selected").val();
+	$("#tuika_span").append("<input type='text' name='tags'" + "id='tags'" + "value='" + tags + "'" + ">" + tags + "</input>");
+	
+	//$("#tuika_span").append("<span id='" + tags_val + "'" + "value='" + tags_val + "'" + ">" + tags + "</span>");
+	});
+
+
+<c:forEach items="${taglist}" var="taglist">
+	$(document).on("click","#option${taglist.NO}",function(){
+		if ($("#option${taglist.NO}").text() == "option${taglist.NO}"){
+			$("#option${taglist.NO}").remove();
+			}
+		});
+</c:forEach>
 
 $(document).ready(function(){	
 			

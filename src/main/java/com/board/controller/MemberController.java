@@ -2,9 +2,9 @@ package com.board.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.board.domain.MemberVO;
+import com.board.domain.tags_BoardVO;
 import com.board.service.MemberService;
 
 @Controller
@@ -56,22 +57,35 @@ public class MemberController {
 	
 	// 회원가입 get
 	@RequestMapping(value = "/sign_up", method = RequestMethod.GET)
-	public void getSignUp() {
+	public void getSignUp(Model model) throws Exception {
 		logger.info("_______회원가입을 하겠습니다________");
+		
+		// 태그 목록
+		List<tags_BoardVO> taglist = null;
+		taglist = memberService.taglist();
+		
+		model.addAttribute("taglist", taglist);
 	}
 	
 	// 회원가입 post
 	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
-	public String postSignUp(MemberVO mvo) throws Exception {
+	public String postSignUp(MemberVO mvo, tags_BoardVO tvo) throws Exception {
 		logger.info("__________회원가입을 성공적으로 완료했습니다__________");
+		logger.info("아이디 : " + mvo.getMember_id());
+		logger.info("비밀번호 : " + mvo.getMember_pwd());		
+		logger.info("태그 : " + mvo.getMember_tags());
+		
+		logger.info("태그번호 : " + tvo.getNO());		
+		logger.info("태그테이블 추가 태그 : " + tvo.gettags());
 		
 		/* 비밀번호 암호화
 		String inputPass = mvo.getMember_pwd();
 		String pass = passwordEncoder.encode(inputPass);
 		mvo.setMember_pwd(pass);
-		*/
+		*/		
 		
 		memberService.signUp(mvo);
+		memberService.signUp_tags(tvo);
 		
 		return "board/home";
 	}
@@ -99,8 +113,8 @@ public class MemberController {
 		
 		logger.info("____________로그인을 할 겁니다.___________");
 		
-		logger.info(mvo.getMember_id() + "아이디");
-		logger.info(mvo.getMember_pwd() + "비밀번호");
+		logger.info("아이디 : " + mvo.getMember_id());
+		logger.info("비밀번호 : " + mvo.getMember_pwd());
 		logger.info("________아이디와 비밀번호는 준비되었습니다._______");
 		
 		//HttpSession session = req.getSession();

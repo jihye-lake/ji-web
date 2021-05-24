@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.board.domain.BoardVO;
 import com.board.domain.MemberVO;
+import com.board.domain.tags_BoardVO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -66,5 +67,6 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sql.selectList(namespace + ".listPage", data);
 	}
+
 
 }

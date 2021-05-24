@@ -3,6 +3,7 @@ package com.board.service;
 import java.util.List;
 
 import com.board.domain.BoardVO;
+import com.board.domain.tags_BoardVO;
 
 public interface BoardService {
 

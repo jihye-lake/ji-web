@@ -7,9 +7,26 @@
   	
   	<!-- 회원가입 -->
   	<insert id="signUp">
-  		insert into member(member_id, member_pwd)
-  			values(#{member_id}, #{member_pwd})
+  		insert into member(member_id, member_pwd, member_tags)
+  			values(#{member_id}, #{member_pwd}, #{tags})
   	</insert>
+  	
+  	<!-- 회원가입_태그추가 -->
+  	
+  	<insert id="signUp_tags">
+  		INSERT INTO tags_board
+  		VALUES
+  		<foreach collection="NO" item="taglist" index="index" separator=",">	  		
+	  		values(tags_board_SEQ.NEXTVAL, #{taglist.tags})
+  		</foreach>
+  	</insert>
+  	
+  	<!-- 
+  	<insert id="signUp_tags">
+  		insert into tags_board(tags)
+  			values(#{tags})
+  	</insert>
+  	 -->
   	
   	<!-- 아이디 중복체크 -->
   	<select id="idChk" resultType="int">
@@ -28,5 +45,13 @@
 		SELECT member_id, member_pwd FROM member 
 		WHERE member_id = #{member_id} AND member_pwd = #{member_pwd}
   	</select>
+	
+	<!-- 태그 목록 -->
+	<select id="taglist" resultType="com.board.domain.tags_BoardVO"> <!-- resultType 은 쿼리의 결과의 형태(DB에 있는 값을 가져올 때 쓰임) -->
+		select
+			NO,tags
+		from tags_board
+		order by NO
+	</select>
   	
   </mapper>
