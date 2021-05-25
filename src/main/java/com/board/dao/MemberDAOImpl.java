@@ -63,8 +63,8 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	// 회원가입_태그추가
-	public void signUp_tags(tags_BoardVO tvo) throws Exception {
-		sql.insert(namespace + ".signUp_tags", tvo);
+	public void signUp_tags(String[] tags) throws Exception {
+		sql.insert(namespace + ".signUp_tags", tags);
 		
 	}
 

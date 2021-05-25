@@ -13,11 +13,11 @@
   	
   	<!-- 회원가입_태그추가 -->
   	
-  	<insert id="signUp_tags">
-  		INSERT INTO tags_board
+  	<insert id="signUp_tags" parameterType="java.util.List">
+  		INSERT INTO tags_board(NO,tags) VALUES
   		VALUES
-  		<foreach collection="NO" item="taglist" index="index" separator=",">	  		
-	  		values(tags_board_SEQ.NEXTVAL, #{taglist.tags})
+  		<foreach collection="tags" item="taglist" index="index" separator=",">	  		
+	  		(tags_board_SEQ.NEXTVAL, #{taglist.tags})
   		</foreach>
   	</insert>
   	

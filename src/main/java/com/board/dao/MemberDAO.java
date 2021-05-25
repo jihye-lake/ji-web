@@ -28,7 +28,7 @@ public interface MemberDAO {
 	public List<tags_BoardVO> taglist() throws Exception;
 
 	// 회원가입_태그추가
-	public void signUp_tags(tags_BoardVO tvo) throws Exception;
+	public void signUp_tags(String[] tags) throws Exception;
 	
 
 }

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -69,7 +70,7 @@ public class MemberController {
 	
 	// 회원가입 post
 	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
-	public String postSignUp(MemberVO mvo, tags_BoardVO tvo) throws Exception {
+	public String postSignUp(MemberVO mvo, tags_BoardVO tvo, @RequestParam(value="tags") String[] tags) throws Exception {
 		logger.info("__________회원가입을 성공적으로 완료했습니다__________");
 		logger.info("아이디 : " + mvo.getMember_id());
 		logger.info("비밀번호 : " + mvo.getMember_pwd());		
@@ -82,10 +83,11 @@ public class MemberController {
 		String inputPass = mvo.getMember_pwd();
 		String pass = passwordEncoder.encode(inputPass);
 		mvo.setMember_pwd(pass);
-		*/		
+		*/
 		
 		memberService.signUp(mvo);
-		memberService.signUp_tags(tvo);
+		//memberService.signUp_tags(tvo);
+		memberService.signUp_tags(tags);
 		
 		return "board/home";
 	}
